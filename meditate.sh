@@ -3,37 +3,54 @@ Passions=(Anime, Art, Physics)
 Role="Sr. Linux Systems Engineer"
 
 
+
+### Load dependency source files
 # source logger function/file
 . ${PWD}/logger.inc
 
 # print meditation ascii
-cat ${PWD}/ascii-meditate 
+
+####
+
+ascii(){
+	cat ${PWD}/ascii-meditate 
+}
+
+hourlyMsgs(){
+	cat ${PWD}/affirmations
+}
+
+tuckinMsgs(){
+	cat ${PWD}/goodnight-msgs
+}
+
+nix(){
+	echo "meditate with style"
+}
 
 initDay(){
 
-nix(){ 
-	echo "style of meditation"
-}
+## Wake hour count
+wH=16
+## Sleep hour count
+sH=8
 
-	# 16 hours out of every day (when I'm not sleeping)
-#	for ((i=0;i<16;i++)) ;
-	for ((i=0;i<2;i++)) ;
+wHsec="$[16 * 60]"
+sHsec="$[8 * 60]"
+
+	## /etc/init.d/rise
+	for ((i=0;i<${wHsec};i++)) ;
 	do
 	set -x
 	cat <<EOF
 	$(eval nix)
-	logger pink "Find time for: ${Passions[*]}"
+	logger blue "Find time for: ${Passions[*]}"
 EOF
 	sleep 3
 
-	echo "Chamomile tea"
-	echo "Get plenty of rest"
-	echo "Good night!"
-	echo " (~.~) Meditate"
 	cat ${PWD}/ascii-meditate 
 	done
-sleep 3
-#sleep 480
+sleep ${sHsec}
 }
 
 initDay
