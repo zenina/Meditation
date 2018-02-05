@@ -5,29 +5,11 @@ Role="Sr. Linux Systems Engineer"
 
 # source logger function/file
 . ${PWD}/logger.inc
+
+# print meditation ascii
 cat ${PWD}/ascii-meditate 
 
 initDay(){
-cat ${PWD}/ascii-meditate 
-
-## Formatting 
-echo " (~.~) Meditate"
-
-echo "Play with puppy"
-echo "Be productive and thoughtful with how I ration the use of time; both my time and that of others."
-echo "Eat healthy, exercise, and take vitamins."
-echo "Use every negative experience to your advantage."
-echo "Stay focused on daily objectives. Focus forward."
-echo "Get work done"
-echo "Be happy"
-echo " (~.~) Meditate"
-echo "Be respectful to others"
-echo "Work towards improving and valuing your reputation"
-echo "Respect friendships, relationships, family and colleagues"
-echo " (~.~) Meditate"
-echo "Work towards long-term goals"
-echo "Have fun!"
-
 
 nix(){ 
 	echo "style of meditation"
