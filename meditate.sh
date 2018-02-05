@@ -3,11 +3,11 @@ Passions=(Anime, Art, Physics)
 Role="Sr. Linux Systems Engineer"
 
 includes=${PWD}/includes/
-
+func=${PWD}/func/
 
 ### Load dependency source files
 # source logger function/file
-
+. ${func}/logger.sh
 
 ascii(){
 	cat ${includes}/ascii-meditate 
@@ -22,12 +22,14 @@ tuckinMsgs(){
 }
 
 nix(){
-	echo "meditate with style"
+	cat ${includes}/nixtips
+	logger cyan "meditate with style"
+	ascii
 }
 
 initDay(){
 
-## Wake hour count
+## Wake hour count/frequency
 wH=16
 ## Sleep hour count
 sH=8
@@ -35,25 +37,32 @@ sH=8
 wHsec="$[16 * 60]"
 sHsec="$[8 * 60]"
 
-	## /etc/init.d/rise
-	for ((i=0;i<${wH};i++)) ;
+## /etc/init.d/rise
+for ((i=0;i<${wH};i++)) ;
 	do
+		nix
 	set -x
 	cat <<EOF
 	$(eval nix)
-	logger blue "Find time for: ${Passions[*]}"
 EOF
-	sleep 60
+	hourlyMsgs
 	done
+	logger yellow "Find time for: ${Passions[*]}"
+	
+	sleep 60
+LOOP_PID=$!
+trap 'kill -9 $LOOP_PID' 0
+
 }
 
-Night(){
-
-cat ${PWD}/
-done
+night(){
+tuckinMsgs
 sleep ${sHsec}
-
 }
+
 initDay
+wait $LOOP_PID
+night
+
 
 
