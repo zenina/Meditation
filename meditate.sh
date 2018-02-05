@@ -2,24 +2,8 @@
 Passions=(Anime, Art, Physics)
 Role="Sr. Linux Systems Engineer"
 
-pink='0;36[0;'
-blue='0;34'
-NC='\033[0m'
 
 
-logger(){
-	case $1 in
-		pink)
-			shift 1
-			echo -e "${pink} $@"
-			;;
-
-		blue)
-			shift 1
-			echo -e "${blue} $@"
-			;;
-	esac
-}
 
 initDay(){
 echo " (~.~) Meditate"
@@ -45,7 +29,7 @@ nix(){
 	set -x
 	cat <<EOF
 	$(eval nix)
-	echo "Find time for: ${Passions[*]}"
+	logger pink "Find time for: ${Passions[*]}"
 EOF
 	sleep 3600
 	done
