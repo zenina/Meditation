@@ -2,26 +2,23 @@
 Passions=(Anime, Art, Physics)
 Role="Sr. Linux Systems Engineer"
 
+includes=${PWD}/includes/
 
 
 ### Load dependency source files
 # source logger function/file
-. ${PWD}/logger.inc
 
-# print meditation ascii
-
-####
 
 ascii(){
-	cat ${PWD}/ascii-meditate 
+	cat ${includes}/ascii-meditate 
 }
 
 hourlyMsgs(){
-	cat ${PWD}/affirmations
+	cat ${includes}/affirmations
 }
 
 tuckinMsgs(){
-	cat ${PWD}/goodnight-msgs
+	cat ${includes}/goodnight-msgs
 }
 
 nix(){
@@ -39,20 +36,24 @@ wHsec="$[16 * 60]"
 sHsec="$[8 * 60]"
 
 	## /etc/init.d/rise
-	for ((i=0;i<${wHsec};i++)) ;
+	for ((i=0;i<${wH};i++)) ;
 	do
 	set -x
 	cat <<EOF
 	$(eval nix)
 	logger blue "Find time for: ${Passions[*]}"
 EOF
-	sleep 3
-
-	cat ${PWD}/ascii-meditate 
+	sleep 60
 	done
-sleep ${sHsec}
 }
 
+Night(){
+
+cat ${PWD}/
+done
+sleep ${sHsec}
+
+}
 initDay
 
 
